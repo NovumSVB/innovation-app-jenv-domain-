@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="hurah" custom="NovumJenv" crudRoot="Custom/NovumJenv" crudNamespace="Crud\Custom\NovumJenv" defaultIdMethod="native" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://novumgit.gitlab.io/innovation-app-schema-xsd/v1/schema-plus-crud.xsd" >
+
+    <modules>
+        <module title="Persoonsgegevens" icon="user" name="Persoonsgegevens" />
+        <module title="Hechtenissen" icon="barcode" name="Hechtenis" />
+    </modules>
+
+    <table name="persoon" module="Persoonsgegevens" title="Personen" phpName="Persoon" namespace="Model\Custom\NovumJenv" apiExposed="true" apiDesc="Dit endpoint bevat fake bsn nummers.">
+        <column name="id" icon="tag" title="Id" form="INTEGER" type="INTEGER" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="bsn" icon="user" title="Burgerservice nummer" form="BSN" required="true"/>
+    </table>
+    <table name="hechtenis" module="Hechtenis" title="Hechtenis" phpName="Hechtenis" namespace="Model\Custom\NovumJenv" apiExposed="true" apiDesc="In dit endpoint staat geregistreerd welke personen momenteel in hechtenis zitten.">
+        <column name="id" icon="tag" title="Id" type="INTEGER" form="INTEGER" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="persoon_id" lookupVisible="Model\Custom\NovumJenv\Persoon.Bsn" type="INTEGER" title="Persoon" icon="user" form="LOOKUP" required="true"/>
+
+        <column name="in_hechtenis" icon="tag" title="In hechtenis" form="CHECKBOX" required="true"/>
+        <column name="eind_datum" icon="calendar" title="Eind datum" form="DATE" type="DATE" required="true"/>
+
+        <foreign-key foreignTable="persoon" phpName="Persoon" onDelete="restrict">
+            <reference local="persoon_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name="voorlopige_hechtenis" module="Hechtenis" title="Voorlopige hechtenis" phpName="VoorlopigeHechtenis" namespace="Model\Custom\NovumJenv" apiExposed="true" apiDesc="In dit endpoint staat geregistreerd welke personen momenteel in voorlopige hechtenis zitten.">
+        <column name="id" icon="tag" title="Id" type="INTEGER" form="INTEGER" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="persoon_id" lookupVisible="Model\Custom\NovumJenv\Persoon.Bsn" type="INTEGER" title="Persoon" icon="user" form="LOOKUP" required="true"/>
+
+        <column name="in_voorlopige_hechtenis" icon="tag" title="In voorlopige hechtenis" form="CHECKBOX" type="BOOLEAN" required="true"/>
+        <column name="eind_datum" icon="calendar" title="Eind datum" form="DATE" type="DATE" required="true"/>
+
+        <foreign-key foreignTable="persoon" phpName="Persoon" onDelete="restrict">
+            <reference local="persoon_id" foreign="id"/>
+        </foreign-key>
+    </table>
+
+    <external-schema filename="../../schema/novum-schema.xml" />
+    <external-schema filename="../../schema/core-schema-extra.xml" />
+    <external-schema filename="../../schema/core-schema.xml" />
+</database>
