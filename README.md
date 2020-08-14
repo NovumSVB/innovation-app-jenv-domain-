@@ -71,7 +71,7 @@ Several other mock api's are available, see the list below.
 </tr>
 <tr>
     <td>9</td>
-    <td>Dit endpoint simuleert de burger</td>
+    <td>Burger simulatie</td>
     <td><a href="https://api.burger.demo.novum.nu">documentation</a></td>
     <td><a href="https://api.burger.demo.novum.nu">api</a>
 </tr>
@@ -85,7 +85,7 @@ Several other mock api's are available, see the list below.
     
 </table>
 
-## Try have a look
+## Try / have a look
 If you wish to have a look at the system, the API's are reachable trough the public internet or via 
 [NlX](https://directory.demo.nlx.io/). The respective admin panels are also available on the public internet. Please 
 contact us if you would like to peek around. We are happy to generate a login for you.
