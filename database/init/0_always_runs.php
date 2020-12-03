@@ -1,8 +1,4 @@
 <?php
-require_once '../../../../vendor/autoload.php';
-require_once '../../../../config/novum.jenv/propel/config.php';
-require_once '../../../../config/novum.jenv/config.php';
-
 $servicename = 'justitie';
 $password = 'Mkwhwm!2020'; // Makkelijker kunnen we het wel maken!
 
